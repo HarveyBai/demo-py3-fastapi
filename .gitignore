@@ -48,6 +48,9 @@ coverage.xml
 *.cover
 *.py,cover
 .hypothesis/
+
+# Private configuration files
+.private*
 .pytest_cache/
 cover/
 
