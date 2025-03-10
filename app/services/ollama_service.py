@@ -1,6 +1,7 @@
 from typing import Optional, Dict, Any
 import httpx
 from ..config import get_settings
+from ..logger import app_logger
 
 # 获取配置实例
 settings = get_settings()
@@ -38,9 +39,16 @@ class OllamaService:
         if system:
             payload["system"] = system
 
-        async with self.client.post(f"{self.base_url}/api/generate", json=payload) as response:
+        try:
+            app_logger.debug(f"Generating text with model {model}, prompt length: {len(prompt)}")
+            response = await self.client.post(f"{self.base_url}/api/generate", json=payload)
             response.raise_for_status()
-            return response.json()
+            result = await response.json()
+            app_logger.debug(f"Successfully generated text with model {model}")
+            return result
+        except Exception as e:
+            app_logger.error(f"Error generating text with model {model}: {str(e)}")
+            raise
 
     async def list_models(self) -> Dict[str, Any]:
         """获取可用模型列表
@@ -48,9 +56,16 @@ class OllamaService:
         Returns:
             Dict[str, Any]: 模型列表
         """
-        async with self.client.get(f"{self.base_url}/api/tags") as response:
-            response.raise_for_status()
-            return response.json()
+        try:
+            app_logger.debug("Fetching available models")
+            async with self.client.get(f"{self.base_url}/api/tags") as response:
+                response.raise_for_status()
+                result = response.json()
+                app_logger.debug(f"Successfully fetched {len(result.get('models', []))} models")
+                return result
+        except Exception as e:
+            app_logger.error(f"Error fetching models list: {str(e)}")
+            raise
 
     async def close(self):
         """关闭HTTP客户端"""

@@ -42,6 +42,10 @@ class Settings:
     docs_url: str = os.getenv("DOCS_URL", "/docs")
     redoc_url: str = os.getenv("REDOC_URL", "/redoc")
     
+    # Redis配置
+    redis_url: str = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+    cache_prefix: str = os.getenv("CACHE_PREFIX", "fastapi_demo")
+    
     # Ollama服务配置
     ollama_base_url: str = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
     ollama_timeout: float = float(os.getenv("OLLAMA_TIMEOUT", "30.0"))
@@ -63,7 +67,9 @@ class Settings:
             "docs_url": self.docs_url,
             "redoc_url": self.redoc_url,
             "ollama_base_url": self.ollama_base_url,
-            "ollama_timeout": self.ollama_timeout
+            "ollama_timeout": self.ollama_timeout,
+            "redis_url": self.redis_url,
+            "cache_prefix": self.cache_prefix
         }
 
 @lru_cache()
