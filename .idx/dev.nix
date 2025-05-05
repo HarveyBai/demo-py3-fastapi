@@ -4,7 +4,7 @@
   # Which nixpkgs channel to use.
   channel = "stable-24.11"; # or "unstable"
   # Use https://search.nixos.org/packages to find packages
-  packages = [ pkgs.python312, pkgs.uv ];
+  packages = [ pkgs.uv pkgs.python312 ];
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [ "ms-python.python" ];
@@ -22,7 +22,7 @@
       enable = true;
       previews = {
         web = {
-          command = [ "./devserver.sh" ];
+          command = [ "./scripts/devserver.sh" ];
           env = { PORT = "$PORT"; };
           manager = "web";
         };
