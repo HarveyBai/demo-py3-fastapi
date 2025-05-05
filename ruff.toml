@@ -1,0 +1,30 @@
+# 支持的 Python 版本
+target-version = "py312"
+
+# 每行最大长度
+line-length = 120
+
+# 排除的文件和目录
+exclude = [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist"
+]
+
+[lint]
+# 启用的规则
+select = [
+    "E",  # pycodestyle 错误
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C",  # flake8-comprehensions
+]
+
+# 忽略的规则
+ignore = []
+
+[format]
+quote-style = "single"

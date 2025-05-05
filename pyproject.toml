@@ -1,0 +1,17 @@
+[project]
+name = "demo-py3-fastapi"
+version = "0.1.0"
+description = "A python3 fastapi demo project"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "debugpy>=1.8.14",
+    "fastapi>=0.115.12",
+    "httpx>=0.28.1",
+    "loguru>=0.7.3",
+    "pytest>=8.3.5",
+    "pytest-cov>=6.1.1",
+    "python-dotenv>=1.1.0",
+    "ruff>=0.11.6",
+    "uvicorn[standard]>=0.34.2",
+]
