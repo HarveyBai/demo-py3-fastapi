@@ -2,7 +2,7 @@
 target-version = "py312"
 
 # 每行最大长度
-line-length = 120
+line-length = 126
 
 # 排除的文件和目录
 exclude = [

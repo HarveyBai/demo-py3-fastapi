@@ -3,15 +3,36 @@ name = "demo-py3-fastapi"
 version = "0.1.0"
 description = "A python3 fastapi demo project"
 readme = "README.md"
+# license = {text = "MIT"}   # {file = "LICENSE.txt"}
+# authors = [{name = "baihw", email = "78026399@qq.com"}]
+# keywords = ["my", "project", "example"]
 requires-python = ">=3.12"
+
+# 项目依赖 (运行时依赖)
 dependencies = [
-    "debugpy>=1.8.14",
+    "loguru>=0.7.3",
+    "python-dotenv>=1.1.0",
+    "pydantic-settings>=2.9.1",
+    "uvicorn[standard]>=0.34.2",
     "fastapi>=0.115.12",
     "httpx>=0.28.1",
-    "loguru>=0.7.3",
+    "pandas>=2.2.3",
+]
+
+# 可选的开发依赖 (例如测试、linting 工具)
+[project.optional-dependencies]
+dev = [
+    "debugpy>=1.8.14",
     "pytest>=8.3.5",
     "pytest-cov>=6.1.1",
-    "python-dotenv>=1.1.0",
-    "ruff>=0.11.6",
-    "uvicorn[standard]>=0.34.2",
+    "ruff>=0.11.6", # 一个快速的 linter 和 formatter
 ]
+
+[build-system]
+requires = ["setuptools>=80.4.0", "wheel"] # 指定构建项目所需的包和它们的最小版本
+build-backend = "setuptools.build_meta"  # 指定使用 setuptools 作为构建后端
+
+[tool.setuptools.packages.find]
+where = ["src"]  # 指定包在 src 目录下
+# include = ["my_package*"] # 可选：如果只想包含特定名称的包，默认是 ["*"]
+# exclude = [] # 可选：排除特定的包
