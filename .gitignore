@@ -51,6 +51,10 @@ coverage.xml
 
 # Private configuration files
 .private*
+# 排除所有.env.开头的文件
+.env.*
+# 但保留.env.example文件
+!.env.example
 .pytest_cache/
 cover/
 .ruff_cache/

@@ -16,7 +16,6 @@ class TestMyConfig:
 
     def test_init_config(self):
         """测试配置初始化"""
-        ''.boolean()
         config = MyConfig()
         assert config is not None
         assert isinstance(config, MyConfig)

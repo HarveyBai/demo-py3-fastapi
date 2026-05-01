@@ -17,6 +17,7 @@ uv add pytest pytest-cov ruff debugpy -G dev  # 安装开发依赖
 uv add python-dotenv loguru httpx  # 安装基础组件库
 uv add fastapi uvicorn[standard] # 安装fastapi
 uv add sqlalchemy  # 安装sqlalchemy
+uv add pyqt6  # 安装PyQt6
 
 # 设置pythonpath
 set PYTHONPATH=%PYTHONPATH%;C:\path\to\your\project\root
